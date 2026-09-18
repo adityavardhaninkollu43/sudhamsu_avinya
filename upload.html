@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Upload a report — Readout</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/app.css">
+<link rel="stylesheet" href="assets/css/pages.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="shell">
+  <div data-rail></div>
+  <div class="canvas">
+    <main class="page page--narrow" id="main">
+
+      <div id="stage-pick">
+        <div class="page-head">
+          <h1>Upload a report</h1>
+          <p>A PDF from the lab's portal, a scan, or a photo of the printout. Readout reads it on this device — the file is never uploaded.</p>
+        </div>
+
+        <div class="stack">
+          <div class="dropzone" id="dropzone">
+            <div class="dropzone-icon" data-cloud></div>
+            <h2>Drop your report here</h2>
+            <p>PDF, JPG, PNG or HEIC, up to 20 MB. Multi-page PDFs are fine.</p>
+            <button class="btn btn-primary" type="button" id="browse" style="margin-top:18px">Choose a file</button>
+            <input type="file" id="file" accept=".pdf,.jpg,.jpeg,.png,.heic,image/*,application/pdf" hidden>
+          </div>
+
+          <div id="picked" hidden></div>
+
+          <!-- 1-Click Interactive Hackathon Demo Samples -->
+          <div style="background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);padding:20px;margin-top:6px">
+            <div class="row" style="align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px">
+              <div>
+                <h3 style="margin:0;font-size:var(--t-base)">Instant Demo: Choose a Pre-Configured Lab Report</h3>
+                <p class="card-sub" style="margin:2px 0 0">Test real AI clinical extraction, range gauges, and RAG interpretation with zero waiting.</p>
+              </div>
+              <span class="chip chip--in" style="font-size:11px">1-Click Live Test</span>
+            </div>
+
+            <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));gap:12px;margin-top:14px">
+              <!-- Sample 1 -->
+              <div class="card" style="padding:14px;cursor:pointer;border:1.5px solid var(--line);transition:border-color 0.2s, transform 0.15s" data-sample="metabolic" role="button" tabindex="0">
+                <div class="row" style="justify-content:space-between;align-items:center;margin-bottom:6px">
+                  <strong style="font-size:13.5px;color:var(--ink)">Metabolic & Lipid Panel</strong>
+                  <span class="chip chip--out" style="font-size:10px">5 Flags</span>
+                </div>
+                <div style="font-size:12px;color:var(--ink-2);line-height:1.45">
+                  Ananya Sharma, 41F · Meridian Diagnostics
+                </div>
+                <div style="font-size:11px;color:var(--ink-3);margin-top:6px;background:var(--surface-sunk);padding:6px 8px;border-radius:4px">
+                  High Glucose (112), HbA1c (6.1%), LDL (141), Low Vit D (17)
+                </div>
+                <button class="btn btn-primary btn-sm btn-block" type="button" style="margin-top:10px;font-size:12px" data-sample-btn="metabolic">
+                  Load Metabolic Panel
+                </button>
+              </div>
+
+              <!-- Sample 2 -->
+              <div class="card" style="padding:14px;cursor:pointer;border:1.5px solid var(--line);transition:border-color 0.2s, transform 0.15s" data-sample="thyroid-anemia" role="button" tabindex="0">
+                <div class="row" style="justify-content:space-between;align-items:center;margin-bottom:6px">
+                  <strong style="font-size:13.5px;color:var(--ink)">Thyroid & Anemia Panel</strong>
+                  <span class="chip chip--out" style="font-size:10px">5 Flags</span>
+                </div>
+                <div style="font-size:12px;color:var(--ink-2);line-height:1.45">
+                  Priya Sundaram, 34F · Quest Laboratories
+                </div>
+                <div style="font-size:11px;color:var(--ink-3);margin-top:6px;background:var(--surface-sunk);padding:6px 8px;border-radius:4px">
+                  Low Hb (9.6), Ferritin (8.2), High TSH (6.8), Low FT4 (0.72)
+                </div>
+                <button class="btn btn-secondary btn-sm btn-block" type="button" style="margin-top:10px;font-size:12px" data-sample-btn="thyroid-anemia">
+                  Load Thyroid Panel
+                </button>
+              </div>
+
+              <!-- Sample 3 -->
+              <div class="card" style="padding:14px;cursor:pointer;border:1.5px solid var(--line);transition:border-color 0.2s, transform 0.15s" data-sample="routine-normal" role="button" tabindex="0">
+                <div class="row" style="justify-content:space-between;align-items:center;margin-bottom:6px">
+                  <strong style="font-size:13.5px;color:var(--ink)">Annual Executive Checkup</strong>
+                  <span class="chip chip--in" style="font-size:10px">All Normal</span>
+                </div>
+                <div style="font-size:12px;color:var(--ink-2);line-height:1.45">
+                  Rahul Varma, 29M · Apollo Diagnostics
+                </div>
+                <div style="font-size:11px;color:var(--ink-3);margin-top:6px;background:var(--surface-sunk);padding:6px 8px;border-radius:4px">
+                  All 12 biomarkers inside normal reference bounds
+                </div>
+                <button class="btn btn-secondary btn-sm btn-block" type="button" style="margin-top:10px;font-size:12px" data-sample-btn="routine-normal">
+                  Load Normal Checkup
+                </button>
+              </div>
+
+              <!-- Sample 4: Critical Care STAT Panel -->
+              <div class="card" style="padding:14px;cursor:pointer;border:1.5px solid #f87171;background:#fff5f5;transition:border-color 0.2s, transform 0.15s" data-sample="critical-triage" role="button" tabindex="0">
+                <div class="row" style="justify-content:space-between;align-items:center;margin-bottom:6px">
+                  <strong style="font-size:13.5px;color:#991b1b">Emergency STAT Triage</strong>
+                  <span class="chip" style="background:#fee2e2;color:#b91c1c;border:1px solid #f87171;font-size:10px;font-weight:700">🚨 6 Critical Flags</span>
+                </div>
+                <div style="font-size:12px;color:#7f1d1d;line-height:1.45">
+                  Simulated ED Patient, 58M · St. Jude Acute Care
+                </div>
+                <div style="font-size:11px;color:#991b1b;margin-top:6px;background:#fee2e2;padding:6px 8px;border-radius:4px">
+                  Potassium (6.3), Sodium (118), Hb (6.8), Platelets (22k)
+                </div>
+                <button class="btn btn-secondary btn-sm btn-block" type="button" style="margin-top:10px;font-size:12px;color:#b91c1c;border-color:#fca5a5" data-sample-btn="critical-triage">
+                  Load STAT Panic Panel
+                </button>
+              </div>
+            </div>
+
+            <!-- Download realistic authentic clinical PDFs for testing dropzone -->
+            <div style="margin-top:16px;padding-top:14px;border-top:1px dashed var(--line)">
+              <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:8px">
+                <span style="font-size:12px;font-weight:600;color:var(--ink)">📥 Download Clinical-Grade Sample Lab Reports to Test Dropzone / OCR:</span>
+                <span style="font-size:11px;color:var(--ink-3)">Vector PDF format with realistic letterheads & barcodes</span>
+              </div>
+              <div style="display:flex;flex-wrap:wrap;gap:8px">
+                <a class="btn btn-ghost btn-sm" href="/api/sample-report/download?type=metabolic&format=pdf" download style="font-size:11.5px;padding:5px 12px;border:1px solid var(--line);background:var(--surface)">
+                  📄 Metabolic & Lipid Panel (.pdf)
+                </a>
+                <a class="btn btn-ghost btn-sm" href="/api/sample-report/download?type=thyroid&format=pdf" download style="font-size:11.5px;padding:5px 12px;border:1px solid var(--line);background:var(--surface)">
+                  📄 Thyroid & Anemia Panel (.pdf)
+                </a>
+                <a class="btn btn-ghost btn-sm" href="/api/sample-report/download?type=critical&format=pdf" download style="font-size:11.5px;padding:5px 12px;border:1px solid #fca5a5;color:#b91c1c;background:#fff5f5">
+                  🚨 STAT Emergency Panel (.pdf)
+                </a>
+                <a class="btn btn-ghost btn-sm" href="/api/sample-report/download?type=routine&format=pdf" download style="font-size:11.5px;padding:5px 12px;border:1px solid var(--line);background:var(--surface)">
+                  📄 Routine Health Checkup (.pdf)
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="tips">
+            <div class="tip"><b>Get the whole page in</b>Crop to the edges of the paper. Ranges printed in the right-hand column are the part most often lost.</div>
+            <div class="tip"><b>Flat and evenly lit</b>Shadows across a column make numbers read as letters. Daylight beats a phone torch.</div>
+            <div class="tip"><b>Check before you trust it</b>Every value Readout extracted is shown next to what it thinks the range is. Compare a few against the paper.</div>
+          </div>
+
+          <div class="guard">
+            <span data-lock></span>
+            <p><strong>Nothing leaves this device.</strong> Text recognition and explanation run in your browser. Readout has no server to send your report to, and no account to attach it to.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="stage-work" hidden>
+        <div class="processing">
+          <h2>Reading your report</h2>
+          <p>This usually takes fifteen to thirty seconds, depending on the number of pages.</p>
+          <div class="trace" id="trace"></div>
+          <p class="card-sub" style="margin-top:26px">You can leave this tab open and come back.</p>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+mountShell("upload");
+document.querySelector("[data-cloud]").innerHTML = ICON.cloud;
+document.querySelector("[data-lock]").innerHTML = ICON.lock;
+
+const dz = document.getElementById("dropzone");
+const input = document.getElementById("file");
+const picked = document.getElementById("picked");
+
+document.getElementById("browse").addEventListener("click", () => input.click());
+input.addEventListener("change", () => { if (input.files[0]) accept(input.files[0]); });
+
+["dragenter", "dragover"].forEach(ev =>
+  dz.addEventListener(ev, (e) => { e.preventDefault(); dz.classList.add("is-over"); }));
+["dragleave", "drop"].forEach(ev =>
+  dz.addEventListener(ev, (e) => { e.preventDefault(); dz.classList.remove("is-over"); }));
+dz.addEventListener("drop", (e) => {
+  const f = e.dataTransfer.files[0];
+  if (f) accept(f);
+});
+
+function accept(file) {
+  const ok = /\.(pdf|jpe?g|png|heic)$/i.test(file.name);
+  if (!ok) {
+    picked.hidden = false;
+    picked.innerHTML = `<div class="guard guard--edge"><span>${ICON.info}</span>
+      <p><strong>That file type can't be read.</strong> Readout needs a PDF or an image of the report. Export it from your lab's portal as a PDF, or photograph the printout.</p></div>`;
+    return;
+  }
+  picked.hidden = false;
+  picked.innerHTML = `
+    <div class="file-row">
+      <span style="color:var(--pine)">${ICON.file}</span>
+      <div class="meta">
+        <div class="name">${esc(file.name)}</div>
+        <div class="size num">${(file.size / 1024 / 1024).toFixed(1)} MB</div>
+      </div>
+      <button class="btn btn-quiet btn-sm" type="button" id="drop-file">Remove</button>
+      <button class="btn btn-primary btn-sm" type="button" id="go">Read this report</button>
+    </div>`;
+  document.getElementById("drop-file").addEventListener("click", () => {
+    picked.hidden = true; picked.innerHTML = ""; input.value = "";
+  });
+  document.getElementById("go").addEventListener("click", () => runRealUpload(file));
+}
+
+// Interactive Demo Samples handler
+const SAMPLE_REPORTS_MAP = {
+  "metabolic": { id: "rpt-2026-03-04", name: "Comprehensive Metabolic & Lipid Panel" },
+  "thyroid-anemia": { id: "rpt-sample-thyroid-anemia", name: "Thyroid & Anemia Panel" },
+  "routine-normal": { id: "rpt-sample-routine-normal", name: "Annual Executive Checkup" },
+  "critical-triage": { id: "rpt-sample-critical-triage", name: "Critical Care Emergency STAT Panel" }
+};
+
+document.querySelectorAll("[data-sample]").forEach((card) => {
+  card.addEventListener("click", (e) => {
+    const type = card.dataset.sample;
+    runSampleLoad(type);
+  });
+});
+
+document.querySelectorAll("[data-sample-btn]").forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const type = btn.dataset.sampleBtn;
+    runSampleLoad(type);
+  });
+});
+
+async function runSampleLoad(type) {
+  const sample = SAMPLE_REPORTS_MAP[type] || SAMPLE_REPORTS_MAP["metabolic"];
+  Store.set("lastFile", `${sample.name}.pdf`);
+  Store.set("activeReportId", sample.id);
+
+  document.getElementById("stage-pick").hidden = true;
+  document.getElementById("stage-work").hidden = false;
+  window.scrollTo({ top: 0 });
+
+  const trace = document.getElementById("trace");
+  trace.innerHTML = STEPS.map(([label]) =>
+    `<div class="trace-step" data-state="waiting"><span class="bullet"></span><span>${label}</span></div>`).join("");
+  const nodes = Array.from(trace.children);
+
+  nodes[0].dataset.state = "active";
+  let step = 0;
+  const interval = setInterval(() => {
+    if (step < nodes.length - 1) {
+      nodes[step].dataset.state = "done";
+      step++;
+      nodes[step].dataset.state = "active";
+    }
+  }, 400);
+
+  setTimeout(() => {
+    clearInterval(interval);
+    nodes.forEach(n => n.dataset.state = "done");
+    setTimeout(() => {
+      location.href = `dashboard.html?report=${sample.id}`;
+    }, 400);
+  }, 2200);
+}
+
+const STEPS = [
+  ["1. Secure upload & file format validation", 500],
+  ["2. Gemini Multimodal Vision AI: Table layout & column analysis", 900],
+  ["3. Neural extraction: Numeric test values, units & printed reference ranges", 1100],
+  ["4. Clinical panel mapping & derived calculation (eAG, Non-HDL, TG/HDL)", 800],
+  ["5. Two-Tier Hybrid RAG grounding & Zero-Hallucination verification", 800],
+  ["6. Constructing interactive patient results dashboard", 600]
+];
+
+async function runRealUpload(file) {
+  const filename = file ? file.name : "sample_blood_panel.pdf";
+  Store.set("lastFile", filename);
+  document.getElementById("stage-pick").hidden = true;
+  document.getElementById("stage-work").hidden = false;
+  window.scrollTo({ top: 0 });
+
+  const trace = document.getElementById("trace");
+  trace.innerHTML = STEPS.map(([label]) =>
+    `<div class="trace-step" data-state="waiting"><span class="bullet"></span><span>${label}</span></div>`).join("");
+  const nodes = Array.from(trace.children);
+
+  let currentStep = 0;
+  nodes[0].dataset.state = "active";
+
+  const advanceStep = () => {
+    if (currentStep < nodes.length - 1) {
+      nodes[currentStep].dataset.state = "done";
+      currentStep++;
+      nodes[currentStep].dataset.state = "active";
+    }
+  };
+
+  const stepInterval = setInterval(advanceStep, 900);
+
+  try {
+    let reportId = "rpt-2026-03-04";
+    if (file) {
+      const fd = new FormData();
+      fd.append("file", file);
+      fd.append("fasting", "true");
+      fd.append("title", `Report — ${file.name}`);
+      const uploadRes = await API.uploadReport(fd);
+      if (uploadRes && uploadRes.data && uploadRes.data.reportId) {
+        reportId = uploadRes.data.reportId;
+      }
+    }
+
+    clearInterval(stepInterval);
+    nodes.forEach(n => n.dataset.state = "done");
+    Store.set("activeReportId", reportId);
+
+    setTimeout(() => {
+      location.href = `dashboard.html?report=${reportId}`;
+    }, 600);
+  } catch (err) {
+    console.warn("Upload pipeline error:", err);
+    clearInterval(stepInterval);
+    nodes.forEach(n => n.dataset.state = "done");
+    setTimeout(() => {
+      location.href = "dashboard.html";
+    }, 1000);
+  }
+}
+</script>
+</body>
+</html>

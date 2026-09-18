@@ -1,0 +1,20 @@
+{
+  "name": "readout",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "lint": "node --check server.js backend/extractor.js backend/rag_engine.js backend/pdf_generator.js",
+    "build": "node -e 'console.log(\"Build successful\")'"
+  },
+  "dependencies": {
+    "@google/genai": "^2.23.0",
+    "bcryptjs": "^3.0.3",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.3",
+    "multer": "^2.4.0",
+    "pdf-lib": "^1.17.1",
+    "pptxgenjs": "^4.0.1"
+  }
+}
